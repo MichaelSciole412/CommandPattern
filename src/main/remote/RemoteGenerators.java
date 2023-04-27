@@ -3,7 +3,7 @@ package remote;
 import java.util.Scanner;
 
 import vendors.Television;
-
+import vendors.RobotMaid;
 /**
  * Library of methods to create specific types of remotes.
  */
@@ -17,9 +17,9 @@ public class RemoteGenerators
      * @param userInput a method of getting input when subscribing or unsubsrcibing to channels.
      * @return the created remote.
      */
-    public static Remote tvRemote(Television tv, Scanner userInput)
+    public static Remote tvRemote(RobotMaid codsworth, Television tv, Scanner userInput)
     {
-        Remote tvRemote = new Remote(8);
+        Remote tvRemote = new Remote(11);
         tvRemote.setButton(new Power(tv), 0);
         tvRemote.setButton(new ChannelListing(tv), 1);
         tvRemote.setButton(new VolumeUp(tv), 2);
@@ -28,6 +28,9 @@ public class RemoteGenerators
         tvRemote.setButton(new ChannelBackward(tv), 5);
         tvRemote.setButton(new Subscribe(tv, userInput), 6);
         tvRemote.setButton(new Unsubscribe(tv, userInput), 7);
-        return tvRemote;
+        tvRemote.setButton(new RobotMaidPower(codsworth), 8);
+	tvRemote.setButton(new RobotMaidClean(codsworth), 9);
+	tvRemote.setButton(new RobotMaidEvil(codsworth), 10);
+	return tvRemote;
     }
 }

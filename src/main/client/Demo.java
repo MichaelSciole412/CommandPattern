@@ -4,6 +4,7 @@ import java.util.Scanner;
 import remote.Remote;
 import remote.RemoteGenerators;
 import vendors.Television;
+import vendors.RobotMaid;
 
 public class Demo
 {
@@ -16,7 +17,8 @@ public class Demo
     {
         Scanner kb = new Scanner(System.in);
         Television tv = new Television(100);
-        Remote remote = RemoteGenerators.tvRemote(tv, kb);
+	RobotMaid codsworth = new RobotMaid();
+        Remote remote = RemoteGenerators.tvRemote(codsworth, tv, kb);
         remoteDemo(remote, kb);
     }
 
